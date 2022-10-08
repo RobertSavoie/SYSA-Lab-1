@@ -6,6 +6,19 @@
 import random
 import string
 
+
+def get_random_password(num_of_letters: int, num_of_digits: int, num_of_special: int) -> int:
+    letters = string.ascii_letters
+    numbers = string.digits
+    characters = string.punctuation
+    result = ''.join(random.choice(letters) for i in range(num_of_letters))
+    result += ''.join(random.choice(numbers) for i in range(num_of_digits))
+    result += ''.join(random.choice(characters) for i in range(num_of_special))
+    result = ''.join(random.sample(result, len(result)))
+
+    print(f"Your desired password is: {result}")
+
+
 cont = True
 passLen = 0
 numOfLetters = 0
@@ -28,8 +41,8 @@ cont = True
 while cont:
     try:
         numOfLetters = int(input('Please enter the number of letters desired in the password: '))
-        if numOfLetters not in range(0, passLen-1):
-            print(f'The number of letters should be in the range of 0 and {passLen-2}')
+        if numOfLetters not in range(0, passLen - 1):
+            print(f'The number of letters should be in the range of 0 and {passLen - 2}')
         else:
             cont = False
 
@@ -45,7 +58,7 @@ while cont:
         if numOfDigits in range(0, charRem):
             cont = False
         else:
-            print(f'The number of digits should be in the range of 0 and {charRem-1}')
+            print(f'The number of digits should be in the range of 0 and {charRem - 1}')
 
     except ValueError:
         print("Input must be a whole number")
@@ -56,7 +69,7 @@ cont = True
 while cont:
     try:
         numOfSpecial = int(input('Please enter the number of special characters desired in the password: '))
-        if numOfSpecial in range(0, charRem+1):
+        if numOfSpecial in range(0, charRem + 1):
             cont = False
         else:
             print(f'The number of special characters should be in the range of 0 and {charRem}')
@@ -64,23 +77,4 @@ while cont:
     except ValueError:
         print('Input must be a whole number')
 
-print(numOfLetters, numOfDigits, numOfSpecial)
-
-# def get_random_password():
-#     random_source = string.ascii_letters + string.digits + string.punctuation
-#     password = random.choice(numOfLetters)
-#     password += random.choice(numOfDigits)
-#     password += random.choice(numOfSpecial)
-#
-#     for i in range(passLen):
-#         password += random.choice(random_source)
-#
-#     password_list = list(password)
-#
-#     random.SystemRandom().shuffle(password_list)
-#     password = ''.join(password_list)
-#     return password
-#
-#
-# print('Your desired password is: ', get_random_password())
-
+get_random_password(numOfLetters, numOfDigits, numOfSpecial)
