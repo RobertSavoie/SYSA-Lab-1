@@ -40,6 +40,9 @@ cont = True
 
 while cont:
     try:
+        # We have it validating a max of two less than the max password length so that we don't
+        # end up with a password that's longer than the user requested.
+        # It reduces to one less for the next loop and then none for the last.
         numOfLetters = int(input('Please enter the number of letters desired in the password: '))
         if numOfLetters not in range(0, passLen - 1):
             print(f'The number of letters should be in the range of 0 and {passLen - 2}')
