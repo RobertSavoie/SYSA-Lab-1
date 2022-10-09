@@ -76,5 +76,8 @@ while cont:
 
     except ValueError:
         print('Input must be a whole number')
+       
+charRem = charRem - numOfSpecial
+numOfLetters = numOfLetters + charRem
 
 get_random_password(numOfLetters, numOfDigits, numOfSpecial)
